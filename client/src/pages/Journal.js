@@ -17,7 +17,7 @@ function Journal() {
         useMutation(CREATE_ENTRY);
 
     const { loading, error, data } = useQuery(ENTRIES_BY_ACCOUNT, {
-        fetchPolicy: 'network-only',
+        // fetchPolicy: 'network-only',
         variables: {
             accountId: currentUser?.uid,
         },
@@ -48,7 +48,7 @@ function Journal() {
                         accountId: currentUser?.uid,
                     },
                 },
-                refetchQueries: [{ query: ENTRIES_BY_ACCOUNT }],
+                refetchQueries: [ENTRIES_BY_ACCOUNT],
             }).then((data) => {
                 console.log(data?.data);
             });
@@ -71,6 +71,10 @@ function Journal() {
                         <div className="fw-full mt-4">
                             <p className="font-semibold">Entry Date</p>
                             {entry?.date}
+                        </div>
+                        <div className="fw-full mt-4">
+                            <p className="font-semibold">Entry Sentiment</p>
+                            {entry?.sentiment}
                         </div>
                         <div class="w-full mt-4">
                             <p className="font-semibold">Entry Content</p>
