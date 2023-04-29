@@ -82,7 +82,7 @@ public class DataFetcher {
                     () -> new NoSuchElementException("Account with id " + input.getAccountId() + " not found."))
         );
         entryEntity.setContent(input.getContent());
-        entryEntity.setSentient(input.getSentient());
+        entryEntity.setSentiment(input.getSentiment());
         entryRepository.save(entryEntity);
         return modelMapper.map(entryEntity, Entry.class);
     }
@@ -94,7 +94,7 @@ public class DataFetcher {
                 () -> new NoSuchElementException("Entry with id " + input.getEntryId() + " not found.")
         );
         entryEntity.setContent(input.getContent());
-        entryEntity.setSentient(input.getSentient());
+        entryEntity.setSentiment(input.getSentiment());
         return modelMapper.map(entryEntity, Entry.class);
     }
 

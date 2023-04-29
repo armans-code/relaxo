@@ -17,8 +17,8 @@ public class EntryEntity extends BaseEntity {
     @Column(name = "content")
     private String content;
 
-    @Column(name = "sentient")
-    private double sentient;
+    @Column(name = "sentiment")
+    private String sentiment;
 
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)

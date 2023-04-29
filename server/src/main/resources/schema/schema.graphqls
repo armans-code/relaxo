@@ -14,21 +14,21 @@ type Mutation {
 
 type Entry {
     id: String
-    sentient: Float
+    sentiment: String
     content: String
     account: Account
     createdAt: String
 }
 
 input CreateEntryInput {
-    sentient: Float
+    sentiment: String
     content: String
     accountId: String
 }
 
 input EditEntryInput {
     entryId: String
-    sentient: Float
+    sentiment: String
     content: String
 }
 
