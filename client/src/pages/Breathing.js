@@ -1,60 +1,42 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import BoxBreathing from '../components/breathing/BoxBreathing';
+import FourSevenEightBreathing from '../components/breathing/FourSevenEightBreathing';
+import FiveSevenBreathing from '../components/breathing/FiveSevenBreathing';
+import axios from 'axios';
 
 function Breathing() {
-    const [breathingStage, setBreathingStage] = useState(50);
-    const [breatheWord, setBreatheWord] = useState('Relax :)');
+    const [prompt, setPrompt] = useState('');
+    const [method, setMethod] = useState('');
 
-    const boxBreathing = () => {
-        setTimeout(() => {
-            setBreathingStage(100);
-            setBreatheWord('Breathe in (4sec)');
-        }, 0);
-        setTimeout(() => {
-            setBreatheWord('Hold (4 sec)');
-        }, 4000);
-        setTimeout(() => {
-            setBreathingStage(50);
-            setBreatheWord('Breathe out (4 sec)');
-        }, 8000);
-        setTimeout(() => {
-            setBreatheWord('Hold (4 sec)');
-        }, 12000);
-        setTimeout(() => {
-            setBreatheWord('Relax :)');
-        }, 16000);
+    const handleSubmit = async () => {
+        axios.post('/breathing', { prompt }).then((data) => {
+            setMethod(data?.data?.choices[0]?.message?.content);
+            console.log(method);
+        });
     };
 
     return (
-        <div className="flex flex-col items-center justify-center gap-20 min-h-screen bg-gray-100">
-            <p>
-                Find peace of mind with 4-7-8 breathing - a simple technique of
-                inhaling deeply for four seconds, holding for seven, and
-                exhaling for eight. This exercise activates the body's
-                relaxation response, reducing stress, anxiety, and improving
-                focus.
-            </p>
-            <p>
-                Box Breathing has been shown to reduce the physical symptoms of
-                stress, such as elevated heart rate and blood pressure, and can
-                help calm the mind and body. By regulating your breath and
-                focusing on the rhythm of your breath, you can enter a state of
-                relaxation and mindfulness.
-            </p>
-            <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={boxBreathing}
-            >
-                Start Box Breathing
-            </button>
-            <div>
-                <div className="w-62 h-62 rounded-full border-8 border-blue-900 scale-150 bg-transparent flex items-center justify-center">
-                    <div
-                        className={`w-60 h-60 flex flex-col items-center justify-center rounded-full bg-blue-500 transition duration-[4s] scale-${breathingStage}`}
-                    >
-                        <p className="text-white text-2xl">{breatheWord}</p>
-                    </div>
-                </div>
+        <div className="w-7/12 mx-auto flex flex-col items-center gap-20">
+            <div class="w-full mt-4">
+                <textarea
+                    class="w-full h-32 px-3 py-1 mt-2 text-gray-700 placeholder-gray-400 bg-white border border-gray-200 rounded-lg focus:outline-none"
+                    placeholder="I am feeling..."
+                    value={prompt}
+                    onChange={(e) => setPrompt(e.target.value)}
+                />
+                <button
+                    onClick={handleSubmit}
+                    className="w-full flex justify-center bg-blue-600 hover:bg-blue-800 text-gray-100 p-3 rounded-full tracking-wide font-semibold shadow-lg cursor-pointer transition ease-in duration-200"
+                >
+                    Find Breathing Technique
+                </button>
             </div>
+
+            {method && <p>Recommended Breathing Technique: {method} Method</p>}
+
+            {method == '5-7' && <FiveSevenBreathing />}
+            {method == '4-7-8' && <FourSevenEightBreathing />}
+            {method.toLowerCase() == 'box' && <BoxBreathing />}
         </div>
     );
 }

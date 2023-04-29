@@ -116,6 +116,7 @@ function Journal() {
 
     return (
         <div className="w-7/12 mx-auto flex flex-col items-center">
+            <h1 className="text-3xl font-bold my-4">Your Daily Journal</h1>
             <JournalCalendar
                 data={data}
                 value={selected}

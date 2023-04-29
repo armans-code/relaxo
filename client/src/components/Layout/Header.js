@@ -19,6 +19,12 @@ function Header() {
                         </Link>
                         <div class="flex items-center gap-2">
                             <Link
+                                to="/"
+                                className="p-2 mx-4 hover:text-blue-700 text-blue-600 transition-colors duration-300"
+                            >
+                                Relaxo
+                            </Link>
+                            <Link
                                 to="/journal"
                                 className="p-2 mx-4 hover:text-blue-600 transition-colors duration-300"
                             >
