@@ -60,7 +60,7 @@ async def get_breathing(body: ChatLog):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",
         messages=[
-            {"role": "system", "content": "You are a breathing expert meant to choose whic method between Box Breathing, 4-7-8, and 5-7 is perfect for someone based on the words they use to describe how they are feeling. Only respond with the name of the method. ONLY Respond with one of these three choices: Box, 4-7-8, 5-7."},
+            {"role": "system", "content": "You are a breathing expert meant to choose which method between Box Breathing, 4-7-8, and 5-7 is perfect for someone based on the words they use to describe how they are feeling. Only respond with the name of the method. ONLY Respond with one of these three choices: Box, 4-7-8, 5-7."},
             {"role": "user", "content": "```I am stressed and overworked```?"},
             {"role": "assistant", "content": "Box"},
             {"role": "user", "content": f'```${prompt}```'}, 
