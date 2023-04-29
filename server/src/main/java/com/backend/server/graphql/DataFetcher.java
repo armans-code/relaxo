@@ -83,6 +83,7 @@ public class DataFetcher {
         );
         entryEntity.setContent(input.getContent());
         entryEntity.setSentiment(input.getSentiment());
+        entryEntity.setDate(input.getDate());
         entryRepository.save(entryEntity);
         return modelMapper.map(entryEntity, Entry.class);
     }

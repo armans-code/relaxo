@@ -9,3 +9,14 @@ export const CREATE_ACCOUNT = gql`
         }
     }
 `;
+
+export const CREATE_ENTRY = gql`
+    mutation createEntry($input: CreateEntryInput!) {
+        createEntry(input: $input) {
+            id
+            content
+            sentiment
+            createdAt
+        }
+    }
+`;

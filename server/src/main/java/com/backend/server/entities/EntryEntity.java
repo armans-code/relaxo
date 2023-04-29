@@ -8,7 +8,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "journal")
+@Table(name = "entry")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -19,6 +19,9 @@ public class EntryEntity extends BaseEntity {
 
     @Column(name = "sentiment")
     private String sentiment;
+
+    @Column(name = "date")
+    private String date;
 
     @ManyToOne
     @JoinColumn(name = "account_id", nullable = false)

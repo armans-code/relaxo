@@ -9,3 +9,14 @@ export const ACCOUNT = gql`
         }
     }
 `;
+
+export const ENTRIES_BY_ACCOUNT = gql`
+    query entriesByAccount($accountId: String!) {
+        entriesByAccount(accountId: $accountId) {
+            id
+            content
+            sentiment
+            date
+        }
+    }
+`;

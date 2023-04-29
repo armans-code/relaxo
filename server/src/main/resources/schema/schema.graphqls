@@ -17,10 +17,12 @@ type Entry {
     sentiment: String
     content: String
     account: Account
+    date: String
     createdAt: String
 }
 
 input CreateEntryInput {
+    date: String
     sentiment: String
     content: String
     accountId: String

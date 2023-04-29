@@ -27,9 +27,6 @@ function Login() {
         }
     };
 
-    console.log(email);
-    console.log(password);
-
     return (
         <div className="flex items-center justify-center py-12 px-4">
             <div className="w-full space-y-8">
@@ -57,6 +54,7 @@ function Login() {
                         <input
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            type="password"
                             placeholder="password"
                             className="w-full px-4 py-2 border border-gray-300 rounded-xl focus:outline-none"
                         />

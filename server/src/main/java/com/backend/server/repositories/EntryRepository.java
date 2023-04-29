@@ -10,6 +10,6 @@ import java.util.UUID;
 
 @Repository
 public interface EntryRepository extends JpaRepository<EntryEntity, UUID> {
-    @Query(nativeQuery = true, value = "SELECT * FROM event e WHERE e.account_id = :accountId")
+    @Query(nativeQuery = true, value = "SELECT * FROM entry e WHERE e.account_id = :accountId")
     List<EntryEntity> findAllByAccountId(UUID accountId);
 }
