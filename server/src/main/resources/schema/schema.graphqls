@@ -1,0 +1,46 @@
+type Query {
+    allAccounts: [Account]
+    account(accountId: String): Account
+    allEntries: [Entry]
+    entry(entryId: String): Entry
+    entriesByAccount(accountId: String): [Entry]
+}
+
+type Mutation {
+    createAccount(input: CreateAccountInput): Account
+    createEntry(input: CreateEntryInput): Entry
+    editEntry(input: EditEntryInput): Entry
+}
+
+type Entry {
+    id: String
+    sentient: Float
+    content: String
+    account: Account
+    createdAt: String
+}
+
+input CreateEntryInput {
+    sentient: Float
+    content: String
+    accountId: String
+}
+
+input EditEntryInput {
+    entryId: String
+    sentient: Float
+    content: String
+}
+
+input CreateAccountInput {
+    name: String
+    email: String
+    password: String
+}
+
+type Account {
+    id: String
+    name: String
+    email: String
+    createdAt: String
+}
