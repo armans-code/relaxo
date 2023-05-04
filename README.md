@@ -1,7 +1,7 @@
 # relaxo
 A submission to the [Treasure Hacks 3.5 hackathon](https://treasurehacks-3-5.devpost.com/).
 ### Overview
-Relaxo is an all-in-one app that strives to improve mental health over time. 
+Relaxo is an all-in-one app that utilizes AI (GPT-3.5) to improve mental health over time, built in 24 hours.
 #### Technology
 - React UI
 - Tailwind styling
